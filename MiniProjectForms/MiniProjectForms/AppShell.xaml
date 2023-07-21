@@ -1,0 +1,45 @@
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MiniProjectForms.Views"
+       x:Class="MiniProjectForms.AppShell"
+       FlyoutBackgroundColor="{StaticResource PrimaryColor}"
+       Title="Task Manager">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <!-- Styles -->
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="White" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.TitleColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.DisabledColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="Shell.UnselectedColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="White" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource SecondaryColor}" />
+            </Style>
+
+            <Style TargetType="TabBar">
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+            </Style>
+
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+            <!-- Autres styles -->
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Pages -->
+    <TabBar>
+        <Tab Title="Tasks" Icon="tasks.png">
+            <ShellContent ContentTemplate="{DataTemplate local:TaskListPage}" />
+        </Tab>
+        <!--<Tab Title="Settings" Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
+        </Tab>-->
+    </TabBar>
+
+</Shell>

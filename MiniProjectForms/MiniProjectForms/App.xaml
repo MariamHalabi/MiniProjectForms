@@ -1,0 +1,114 @@
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MiniProjectForms"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="MiniProjectForms.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+                <On Platform="Android" Value="FontAwesome6Brands.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome6Brands-Regular" />
+                <On Platform="UWP" Value="/Assets/FontAwesome5Brands.otf#Font Awesome 5 Brands" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+                <On Platform="Android" Value="FontAwesome6Solid.otf#Regular" />
+                <On Platform="iOS" Value="FontAwesome6Free-Solid" />
+                <On Platform="UWP"  Value="/Assets/FontAwesome6Solid.otf#Font Awesome 6 Free" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+                <On Platform="Android"  Value="FontAwesome6Regular.otf#Regular" />
+                <On Platform="iOS"  Value="FontAwesome6Free-Regular" />
+                <On Platform="UWP" Value="/Assets/FontAwesome6Regular.otf#Font Awesome 6 Free" />
+            </OnPlatform>
+
+            <!-- Styles -->
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="SteelBlue" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="TextColor" Value="#015480"/>
+            </Style>
+
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="SteelBlue" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+
+            <Style x:Key="ButtonStyleSort" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="SteelBlue" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="WidthRequest" Value="170"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+
+            </Style>
+
+            <Style x:Key="PickerStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="SeparatorColor" Value="Gray" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+
+            <Style x:Key="TaskCardStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="#A3BEE5" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="Margin" Value="10,0,10,5"/>
+                <Setter Property="Padding" Value="10,0,0,0"/>
+            </Style>
+        
+            <Style x:Key="TaskTitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#1182CE"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="0,10,0,0"/>
+            </Style>
+
+            <Style x:Key="TaskDueDateLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="TextColor" Value="GhostWhite" />
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+
+            </Style>
+
+            <!-- Colors -->
+            <Color x:Key="PrimaryColor">#2196F3</Color>
+            <Color x:Key="SecondaryColor">#607D8B</Color>
+            <Color x:Key="AccentColor">#FFC107</Color>
+            <!-- Ajoutez d'autres couleurs selon vos besoins -->
+
+            <!-- Autres ressources -->
+            <!-- Ajoutez ici d'autres ressources telles que des dimensions, des polices, etc. -->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

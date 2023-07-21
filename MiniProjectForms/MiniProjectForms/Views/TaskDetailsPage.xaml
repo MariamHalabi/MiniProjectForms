@@ -1,0 +1,27 @@
+﻿
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MiniProjectForms.Views.TaskDetailsPage"
+             xmlns:local="clr-namespace:MiniProjectForms.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:TaskDetailsVM />
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Label Text="Titre :" FontSize="Title"/>
+        <Entry Text="{Binding CurrentTask.Title}" x:Name="Title"/>
+
+        <Label Text="Description :" FontSize="Title"/>
+        <Entry Text="{Binding CurrentTask.Description}" x:Name="Description"/>
+
+        <Label Text="Due Date :" FontSize="Title"/>
+        <DatePicker Date="{Binding CurrentTask.DueDate}" x:Name="DueDate"/>
+
+        <Button Style="{d:StaticResource ButtonStyle}" Text="Update" Clicked="Coucou"></Button>
+    </StackLayout>
+
+</ContentPage>

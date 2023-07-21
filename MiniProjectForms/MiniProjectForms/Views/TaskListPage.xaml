@@ -1,0 +1,83 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MiniProjectForms.ViewModels"
+             x:Class="MiniProjectForms.Views.TaskListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Task List" Style="{StaticResource TitleLabelStyle}" />
+
+            <StackLayout>
+                 <Entry Placeholder="Search" Style="{StaticResource EntryStyle}"
+                   Text="{Binding SearchText, Mode=TwoWay}" />
+
+            <Button Text="Search" Command="{Binding FilterCommand}" Style="{StaticResource ButtonStyle}" />
+            </StackLayout>
+           
+
+            <FlexLayout>
+                <Picker SelectedItem="{Binding SortProperty}" Style="{StaticResource PickerStyle}" WidthRequest="170" HeightRequest="50">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Title</x:String>
+                        <x:String>DueDate</x:String>
+                        <!-- Ajoutez d'autres options de tri -->
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Sort" Command="{Binding SortCommand}" Style="{StaticResource ButtonStyleSort}"/>
+                
+            </FlexLayout>
+
+
+            <!--<ListView ItemsSource="{Binding FilteredTasks}" SelectedItem="{Binding SelectedTask}"
+                      Style="{StaticResource ListViewStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Title}" Style="{StaticResource ListItemLabelStyle}" />
+                                <Label Text="{Binding DueDate, StringFormat='Due: {0:d}'}"
+                                       Style="{StaticResource ListItemSubtitleLabelStyle}" />
+                                <Switch IsToggled="{Binding IsCompleted}" Style="{StaticResource SwitchStyle}" />
+                                <Button Text="Delete" Command="{Binding BindingContext.DeleteCommand, Source={x:Reference Name=taskListPage}}"
+                                        CommandParameter="{Binding .}" Style="{StaticResource ButtonStyle}" />
+                                --><!-- Ajoutez d'autres éléments de l'interface utilisateur pour afficher les détails de la tâche --><!--
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+
+            <ListView ItemsSource="{Binding Tasks}" RowHeight="100" ItemSelected="OnTaskSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--Personnalisez le modèle d'élément de liste ici-->
+                        <ViewCell>
+                            <ViewCell.View>
+                                <ContentView>
+                                    <Frame Style="{StaticResource TaskCardStyle}">
+                                        <StackLayout>
+                                            <Label Text="{Binding Title}" Style="{StaticResource TaskTitleLabelStyle}"/>
+                                            <Label Text="{Binding DueDate}" Style="{StaticResource TaskDueDateLabelStyle}"/>
+                                            <Button HeightRequest="40" WidthRequest="40" BackgroundColor="Transparent" CornerRadius="100" BorderWidth="2" BorderColor="#1182CE" TextColor="SteelBlue" HorizontalOptions="End" Margin="0,-50,10,0" Clicked="DeleteTask" CommandParameter="{Binding Id}">
+                                                <Button.ImageSource>
+                                                    <FontImageSource Glyph="&#xf2ed;" FontFamily="{StaticResource FontAwesomeSolid}" Size="20" Color="#1182CE">
+                                                    </FontImageSource>
+                                                </Button.ImageSource>
+                                            </Button>
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Add Task" Command="{Binding OpenTaskFormCommand}" Style="{StaticResource ButtonStyle}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
