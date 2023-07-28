@@ -15,6 +15,8 @@ namespace MiniProjectForms.Services
         Task<TaskModel> AddTask(TaskModel task);
         Task<TaskModel> UpdateTask(TaskModel task);
         Task<TaskModel> DeleteTask(int id);
+        Task<TaskModel> ChangeCompletionStatus(int id);
+
     }
 }
 

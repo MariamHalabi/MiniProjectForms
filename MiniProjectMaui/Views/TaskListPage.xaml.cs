@@ -49,6 +49,13 @@ namespace MiniProjectMaui.Views
 
             await Navigation.PushModalAsync(popupNewTaskPage);
         }
+
+        private void ChangeCompletionStatus(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int taskId = (int)button.CommandParameter;
+            viewModel.ChangeCompletionStatusCommand.Execute(taskId);
+        }
     }
 
 }

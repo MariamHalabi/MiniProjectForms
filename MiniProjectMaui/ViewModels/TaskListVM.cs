@@ -78,6 +78,8 @@ namespace MiniProjectMaui.ViewModels
 
         public ICommand OpenTaskFormCommand { get; set; }
         public ICommand DeleteTaskCommand { get; set; }
+        public ICommand ChangeCompletionStatusCommand { get; set; }
+
 
         public TaskListVM()
         {
@@ -87,6 +89,7 @@ namespace MiniProjectMaui.ViewModels
             AddCommand = new Command(() => AddTask(AddedTask));
           //  OpenTaskFormCommand = new Command(OpenTaskForm);
             DeleteTaskCommand = new Command(DeleteTask);
+            ChangeCompletionStatusCommand = new Command(ChangeCompletion);
             LoadTasks();
         }
 
@@ -151,6 +154,12 @@ namespace MiniProjectMaui.ViewModels
             await Refresh();
         }
 
+        private async void ChangeCompletion(object parameter)
+        {
+            await taskService.ChangeCompletionStatus((int)parameter);
+            await Refresh();
+        }
+
         public async Task Refresh()
         {
             loadedTasks = await taskService.GetTasks();
@@ -158,6 +167,7 @@ namespace MiniProjectMaui.ViewModels
             OnPropertyChanged(nameof(Tasks));
 
         }
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

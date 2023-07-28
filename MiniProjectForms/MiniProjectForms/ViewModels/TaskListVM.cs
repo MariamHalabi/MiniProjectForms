@@ -81,6 +81,7 @@ namespace MiniProjectForms.ViewModels
 
         public ICommand OpenTaskFormCommand { get; set; }
         public ICommand DeleteTaskCommand { get; set; }
+        public ICommand ChangeCompletionStatusCommand { get; set; }
 
         public TaskListVM()
         {
@@ -90,6 +91,7 @@ namespace MiniProjectForms.ViewModels
             AddCommand = new Command(() => AddTask(AddedTask));
             OpenTaskFormCommand = new Command(OpenTaskForm);
             DeleteTaskCommand = new Command(DeleteTask);
+            ChangeCompletionStatusCommand = new Command(ChangeCompletion);
             LoadTasks();
         }
 
@@ -151,6 +153,12 @@ namespace MiniProjectForms.ViewModels
         private async void DeleteTask(object parameter)
         {
             await taskService.DeleteTask((int)parameter);
+            await Refresh();
+        }
+
+        private async void ChangeCompletion(object parameter)
+        {
+            await taskService.ChangeCompletionStatus((int)parameter);
             await Refresh();
         }
 

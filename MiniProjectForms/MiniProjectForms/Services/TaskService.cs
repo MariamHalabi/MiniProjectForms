@@ -10,7 +10,7 @@ namespace MiniProjectForms.Services
     public class TaskService : ITaskService
     {
         private readonly HttpClient _httpClient;
-        private const string _apiClient = "https://10df-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
+        private const string _apiClient = "https://f789-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
 
         public TaskService()
         {
@@ -75,6 +75,27 @@ namespace MiniProjectForms.Services
                 var deletedTask = await tasksResponse.Content.ReadFromJsonAsync<TaskModel>();
 
                 return (deletedTask != null) ? deletedTask : null;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<TaskModel> ChangeCompletionStatus(int id)
+        {
+            try
+            {
+                var getTasResponse = await _httpClient.GetAsync("TaskList/" + id);
+                var taskToUpdate = await getTasResponse.Content.ReadFromJsonAsync<TaskModel>();
+
+                taskToUpdate.IsCompleted = !taskToUpdate.IsCompleted;
+
+                var tasksResponse = await _httpClient.PutAsJsonAsync("TaskList", taskToUpdate);
+                var updatedTask = await tasksResponse.Content.ReadFromJsonAsync<TaskModel>();
+
+                return (updatedTask != null) ? updatedTask : null;
 
             }
             catch (Exception)

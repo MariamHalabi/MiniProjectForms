@@ -41,6 +41,13 @@ namespace MiniProjectForms.Views
             int taskId = (int)button.CommandParameter;
             viewModel.DeleteTaskCommand.Execute(taskId);
         }
+
+        private void ChangeCompletionStatus(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            int taskId = (int)button.CommandParameter;
+            viewModel.ChangeCompletionStatusCommand.Execute(taskId);
+        }
     }
 
 }

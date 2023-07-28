@@ -83,6 +83,27 @@ namespace MiniProjectMaui.Services
             }
         }
 
+        public async Task<TaskModel> ChangeCompletionStatus(int id)
+        {
+            try
+            {
+                var getTasResponse = await _httpClient.GetAsync("TaskList/"+id);
+                var taskToUpdate = await getTasResponse.Content.ReadFromJsonAsync<TaskModel>();
+
+                taskToUpdate.IsCompleted = !taskToUpdate.IsCompleted;
+
+                var tasksResponse = await _httpClient.PutAsJsonAsync("TaskList", taskToUpdate);
+                var updatedTask = await tasksResponse.Content.ReadFromJsonAsync<TaskModel>();
+
+                return (updatedTask != null) ? updatedTask : null;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<IEnumerable<TaskModel>> GetFilteredTasks(string filterText)
         {
             try
