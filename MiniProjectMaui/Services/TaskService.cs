@@ -10,7 +10,7 @@ namespace MiniProjectMaui.Services
     public class TaskService : ITaskService
     {
         private readonly HttpClient _httpClient;
-        private const string _apiClient = "https://10df-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
+        private const string _apiClient = "https://f789-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
 
         public TaskService()
         {

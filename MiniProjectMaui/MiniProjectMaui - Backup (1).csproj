@@ -54,15 +54,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Platforms\Android\Resources\FontAwesome6BrandsRegular.otf" />
-	  <None Remove="Platforms\Android\Resources\FontAwesome6Regular.otf" />
-	  <None Remove="Platforms\Android\Resources\FontAwesome6Solid.otf" />
+	  <MauiFont Remove="Resources\Fonts\FontAwesome6BrandsRegular.otf" />
+	  <MauiFont Remove="Resources\Fonts\FontAwesome6Regular.otf" />
+	  <MauiFont Remove="Resources\Fonts\FontAwesome6Solid.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\FontAwesome6BrandsRegular.otf" />
 	  <None Remove="Resources\FontAwesome6Regular.otf" />
 	  <None Remove="Resources\FontAwesome6Solid.otf" />
-	  <None Remove="Resources\Fonts\FontAwesome6BrandsRegular.otf" />
-	  <None Remove="Resources\Fonts\FontAwesome6Regular.otf" />
-	  <None Remove="Resources\Fonts\FontAwesome6Solid.otf" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,9 +71,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="Platforms\Android\Resources\FontAwesome6BrandsRegular.otf" />
-	  <Resource Include="Platforms\Android\Resources\FontAwesome6Regular.otf" />
-	  <Resource Include="Platforms\Android\Resources\FontAwesome6Solid.otf" />
+	  <AndroidResource Include="Resources\FontAwesome6BrandsRegular.otf" />
+	  <AndroidResource Include="Resources\FontAwesome6Regular.otf" />
+	  <AndroidResource Include="Resources\FontAwesome6Solid.otf" />
+	  <AndroidResource Include="Resources\Fonts\FontAwesome6BrandsRegular.otf" />
+	  <AndroidResource Include="Resources\Fonts\FontAwesome6Regular.otf" />
+	  <AndroidResource Include="Resources\Fonts\FontAwesome6Solid.otf" />
 	</ItemGroup>
 
 	<ItemGroup>
