@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -34,15 +35,15 @@ namespace MiniProjectForms.ViewModels
             }
         }
 
-        private string filterText;
-        public string FilterText
+        private string searchText;
+        public string SearchText
         {
-            get { return filterText; }
+            get { return searchText; }
             set
             {
-                filterText = value;
+                searchText = value;
                 FilterTasks();
-                OnPropertyChanged(nameof(FilterText));
+                OnPropertyChanged(nameof(SearchText));
             }
         }
 
@@ -57,7 +58,7 @@ namespace MiniProjectForms.ViewModels
             }
         }
 
-        private string sortProperty;
+        private string sortProperty = "Title";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -67,7 +68,6 @@ namespace MiniProjectForms.ViewModels
             set
             {
                 sortProperty = value;
-                SortTasks();
                 OnPropertyChanged(nameof(SortProperty));
             }
         }
@@ -99,12 +99,31 @@ namespace MiniProjectForms.ViewModels
             Tasks = new ObservableCollection<TaskModel>(loadedTasks);
         }
 
-        private void FilterTasks()
+        private async void FilterTasks()
         {
+            if(!string.IsNullOrEmpty(SearchText))
+            {
+                Tasks = new ObservableCollection<TaskModel>(await taskService.GetFilteredTasks(SearchText));
+                OnPropertyChanged(nameof(Tasks));
+
+            }
+            else
+            {
+                await Refresh();
+            }
         }
 
-        private void SortTasks()
+        private async void SortTasks()
         {
+            if (!string.IsNullOrEmpty(SortProperty))
+            {
+                Tasks = new ObservableCollection<TaskModel>(await taskService.GetSortedTasks(SortProperty));
+                OnPropertyChanged(nameof(Tasks));
+            }
+            else
+            {
+                await Refresh();
+            }
         }
 
 

@@ -28,5 +28,11 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+  	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome6BrandsRegular.otf</string>
+		<string>FontAwesome6Regular.otf</string>
+		<string>FontAwesome6Solid.otf</string>
+	</array>
 </dict>
 </plist>

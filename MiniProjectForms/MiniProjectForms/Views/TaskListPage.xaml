@@ -20,7 +20,6 @@
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Title</x:String>
                         <x:String>DueDate</x:String>
-                        <!-- Ajoutez d'autres options de tri -->
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>

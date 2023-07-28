@@ -54,20 +54,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\FontAwesome6BrandsRegular.otf" />
+	  <None Remove="Platforms\Android\Resources\FontAwesome6Regular.otf" />
+	  <None Remove="Platforms\Android\Resources\FontAwesome6Solid.otf" />
 	  <None Remove="Resources\FontAwesome6BrandsRegular.otf" />
 	  <None Remove="Resources\FontAwesome6Regular.otf" />
 	  <None Remove="Resources\FontAwesome6Solid.otf" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidAsset Include="Platforms\Android\Resources\FontAwesome6BrandsRegular.otf" />
+	  <AndroidAsset Include="Platforms\Android\Resources\FontAwesome6Regular.otf" />
+	  <AndroidAsset Include="Platforms\Android\Resources\FontAwesome6Solid.otf" />
 	  <AndroidAsset Include="Resources\Styles\Colors.xaml" />
 	  <AndroidAsset Include="Resources\Styles\Styles.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AndroidResource Include="Resources\FontAwesome6BrandsRegular.otf" />
-	  <AndroidResource Include="Resources\FontAwesome6Regular.otf" />
-	  <AndroidResource Include="Resources\FontAwesome6Solid.otf" />
 	</ItemGroup>
 
 	<ItemGroup>

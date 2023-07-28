@@ -10,7 +10,7 @@ namespace MiniProjectMaui.Services
     public class TaskService : ITaskService
     {
         private readonly HttpClient _httpClient;
-        private const string _apiClient = "https://6e1c-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
+        private const string _apiClient = "https://10df-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
 
         public TaskService()
         {
@@ -80,6 +80,38 @@ namespace MiniProjectMaui.Services
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+        public async Task<IEnumerable<TaskModel>> GetFilteredTasks(string filterText)
+        {
+            try
+            {
+                var tasksResponse = await _httpClient.GetAsync("TaskList/Filtered/" + filterText);
+                var tasksModels = await tasksResponse.Content.ReadFromJsonAsync<IEnumerable<TaskModel>>();
+
+                return (tasksModels != null) ? tasksModels : new List<TaskModel>();
+
+            }
+            catch (Exception)
+            {
+                return new List<TaskModel>();
+            }
+        }
+
+        public async Task<IEnumerable<TaskModel>> GetSortedTasks(string sortText)
+        {
+            try
+            {
+                var tasksResponse = await _httpClient.GetAsync("TaskList/Sorted/" + sortText);
+                var tasksModels = await tasksResponse.Content.ReadFromJsonAsync<IEnumerable<TaskModel>>();
+
+                return (tasksModels != null) ? tasksModels : new List<TaskModel>();
+
+            }
+            catch (Exception)
+            {
+                return new List<TaskModel>();
             }
         }
     }

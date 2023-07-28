@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiniProjectForms.Data;
 using MiniProjectForms.Models;
+using System.Linq;
 
 namespace MiniProjectForms.API.Controllers
 {
@@ -68,6 +69,33 @@ namespace MiniProjectForms.API.Controllers
             _dbContext.SaveChanges();
 
             return Ok(taskToDelete);
+        }
+
+        [HttpGet("Filtered/{filterText}")]
+        public IEnumerable<TaskModel> GetFilteredTasks(string filterText)
+        {
+            return _dbContext.Tasks.Where(t => t.Title.Contains(filterText)).ToList();
+        }
+
+        [HttpGet("Sorted/{sortText}")]
+        public IEnumerable<TaskModel> GetSortedTasks(string sortText)
+        {
+            List<TaskModel> tasks;
+
+            switch(sortText)
+            {
+                case "Title":
+                     tasks = _dbContext.Tasks.GroupBy(t => t.Title).AsEnumerable().SelectMany(g => g).ToList();
+                    break;
+
+                case "Due Date":
+                    tasks = _dbContext.Tasks.GroupBy(t => t.DueDate).AsEnumerable().SelectMany(g => g).ToList();
+                    break;
+
+                default: tasks = _dbContext.Tasks.ToList(); break;
+            }
+
+            return tasks;   
         }
     }
 }
