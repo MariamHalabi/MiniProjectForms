@@ -97,7 +97,7 @@ namespace MiniProjectForms.ViewModels
 
         private async void LoadTasks()
         {
-            loadedTasks = await taskService.GetTasks();
+            loadedTasks = await taskService.GetTasksByDevice();
             Tasks = new ObservableCollection<TaskModel>(loadedTasks);
         }
 
@@ -164,7 +164,7 @@ namespace MiniProjectForms.ViewModels
 
         public async Task Refresh()
         {
-            loadedTasks = await taskService.GetTasks();
+            loadedTasks = await taskService.GetTasksByDevice();
             Tasks = new ObservableCollection<TaskModel>(loadedTasks);
             OnPropertyChanged(nameof(Tasks));
 

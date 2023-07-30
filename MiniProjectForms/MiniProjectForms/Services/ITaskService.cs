@@ -16,6 +16,7 @@ namespace MiniProjectForms.Services
         Task<TaskModel> UpdateTask(TaskModel task);
         Task<TaskModel> DeleteTask(int id);
         Task<TaskModel> ChangeCompletionStatus(int id);
+        Task<IEnumerable<TaskModel>> GetTasksByDevice();
 
     }
 }

@@ -5,6 +5,7 @@ using MiniProjectForms.Models;
 using MiniProjectForms.Services;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,6 +33,7 @@ namespace MiniProjectForms.Views
                 Description = description,
                 DueDate = dueDate,
                 IsCompleted = false,
+                DeviceId = DeviceInfo.Name.ToString()
             };
 
             await _taskService.AddTask(newTask);

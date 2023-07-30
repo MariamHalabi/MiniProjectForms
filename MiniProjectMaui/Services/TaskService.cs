@@ -10,7 +10,7 @@ namespace MiniProjectMaui.Services
     public class TaskService : ITaskService
     {
         private readonly HttpClient _httpClient;
-        private const string _apiClient = "https://f789-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
+        private const string _apiClient = "https://2a4f-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
 
         public TaskService()
         {
@@ -134,6 +134,22 @@ namespace MiniProjectMaui.Services
             {
                 return new List<TaskModel>();
             }
+        }
+        public async Task<IEnumerable<TaskModel>> GetTasksByDevice()
+        {
+            try
+            {
+                var tasksResponse = await _httpClient.GetAsync("TaskList/Device/" + DeviceInfo.Name.ToString());
+                var tasksModels = await tasksResponse.Content.ReadFromJsonAsync<IEnumerable<TaskModel>>();
+
+                return (tasksModels != null) ? tasksModels : new List<TaskModel>();
+
+            }
+            catch (Exception)
+            {
+                return new List<TaskModel>();
+            }
+
         }
     }
 

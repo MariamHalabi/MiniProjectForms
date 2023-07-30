@@ -28,6 +28,7 @@ namespace MiniProjectMaui.Views
                 Description = description,
                 DueDate = dueDate,
                 IsCompleted = false,
+                DeviceId = DeviceInfo.Name.ToString()
             };
 
             await _taskService.AddTask(newTask);

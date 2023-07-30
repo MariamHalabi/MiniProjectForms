@@ -33,6 +33,9 @@ namespace MiniProjectForms.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DeviceId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
@@ -51,7 +54,8 @@ namespace MiniProjectForms.API.Migrations
                         {
                             Id = 1,
                             Description = "Description 1",
-                            DueDate = new DateTime(2023, 7, 17, 12, 29, 11, 368, DateTimeKind.Local).AddTicks(3575),
+                            DeviceId = "OPPO A74",
+                            DueDate = new DateTime(2023, 7, 28, 21, 34, 55, 672, DateTimeKind.Local).AddTicks(3406),
                             IsCompleted = false,
                             Title = "Task 1"
                         },
@@ -59,7 +63,8 @@ namespace MiniProjectForms.API.Migrations
                         {
                             Id = 2,
                             Description = "Description 2",
-                            DueDate = new DateTime(2023, 7, 17, 12, 29, 11, 368, DateTimeKind.Local).AddTicks(3614),
+                            DeviceId = "OPPO A74",
+                            DueDate = new DateTime(2023, 7, 28, 21, 34, 55, 672, DateTimeKind.Local).AddTicks(3610),
                             IsCompleted = true,
                             Title = "Task 2"
                         });

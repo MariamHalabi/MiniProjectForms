@@ -22,6 +22,12 @@ namespace MiniProjectForms.API.Controllers
             return _dbContext.Tasks.ToList();
         }
 
+        [HttpGet("Device/{device}")]
+        public IEnumerable<TaskModel> GetAllByDevice(string device)
+        {
+            return _dbContext.Tasks.Where(t => t.DeviceId == device).ToList();
+        }
+
         [HttpGet("{id}")]
         public TaskModel GetTask(int id)
         {

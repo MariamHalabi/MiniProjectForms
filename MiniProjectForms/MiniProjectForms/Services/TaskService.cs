@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace MiniProjectForms.Services
 {
     public class TaskService : ITaskService
     {
         private readonly HttpClient _httpClient;
-        private const string _apiClient = "https://f789-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
+        private const string _apiClient = "https://63cc-89-108-154-125.ngrok-free.app"; //Depends on Tunnel for localhost
 
         public TaskService()
         {
@@ -23,6 +24,23 @@ namespace MiniProjectForms.Services
             try
             {
                 var tasksResponse = await _httpClient.GetAsync("TaskList");
+                var tasksModels = await tasksResponse.Content.ReadFromJsonAsync<IEnumerable<TaskModel>>();
+
+                return (tasksModels != null) ? tasksModels : new List<TaskModel>();
+
+            }
+            catch (Exception)
+            {
+                return new List<TaskModel>();
+            }
+
+        }
+
+        public async Task<IEnumerable<TaskModel>> GetTasksByDevice()
+        {
+            try
+            {
+                var tasksResponse = await _httpClient.GetAsync("TaskList/Device/"+DeviceInfo.Name.ToString());
                 var tasksModels = await tasksResponse.Content.ReadFromJsonAsync<IEnumerable<TaskModel>>();
 
                 return (tasksModels != null) ? tasksModels : new List<TaskModel>();

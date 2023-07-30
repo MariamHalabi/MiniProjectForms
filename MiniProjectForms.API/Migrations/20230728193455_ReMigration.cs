@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MiniProjectForms.API.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondMigration : Migration
+    public partial class ReMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,8 @@ namespace MiniProjectForms.API.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsCompleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsCompleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeviceId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,11 +32,11 @@ namespace MiniProjectForms.API.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tasks",
-                columns: new[] { "Id", "Description", "DueDate", "IsCompleted", "Title" },
+                columns: new[] { "Id", "Description", "DeviceId", "DueDate", "IsCompleted", "Title" },
                 values: new object[,]
                 {
-                    { 1, "Description 1", new DateTime(2023, 7, 17, 12, 29, 11, 368, DateTimeKind.Local).AddTicks(3575), false, "Task 1" },
-                    { 2, "Description 2", new DateTime(2023, 7, 17, 12, 29, 11, 368, DateTimeKind.Local).AddTicks(3614), true, "Task 2" }
+                    { 1, "Description 1", "OPPO A74", new DateTime(2023, 7, 28, 21, 34, 55, 672, DateTimeKind.Local).AddTicks(3406), false, "Task 1" },
+                    { 2, "Description 2", "OPPO A74", new DateTime(2023, 7, 28, 21, 34, 55, 672, DateTimeKind.Local).AddTicks(3610), true, "Task 2" }
                 });
         }
 
